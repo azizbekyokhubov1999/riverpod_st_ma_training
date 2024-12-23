@@ -3,9 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'home_page.dart';
 
-final nameProvider = Provider<String>((ref) {
-  return "Azizbek Yoqubov";
-});
+//first method - with provider
+// final nameProvider = Provider<String>((ref) {
+//   return "Azizbek Yoqubov";
+// });
+
+//second method - with state provider for update
+final nameProvider = StateProvider<String?>((ref) => null);
+
 
 void main() {
   runApp(
