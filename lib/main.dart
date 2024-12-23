@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_st_ma_training/controllers/user_controller.dart';
+import 'package:riverpod_st_ma_training/user.dart';
 
 import 'home_page.dart';
 
@@ -9,7 +11,16 @@ import 'home_page.dart';
 // });
 
 //second method - with state provider for update
-final nameProvider = StateProvider<String?>((ref) => null);
+// final nameProvider = StateProvider<String?>((ref) => null);
+
+//third method StateNotifier
+final userController = StateNotifierProvider<UserNotifier, User>((ref) => UserNotifier(
+  User(
+      name: "",
+      age: 0
+  )
+)
+);
 
 
 void main() {
