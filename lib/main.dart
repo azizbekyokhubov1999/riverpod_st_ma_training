@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_st_ma_training/controllers/user_controller.dart';
+import 'package:riverpod_st_ma_training/screens/home/home_screen.dart';
 import 'package:riverpod_st_ma_training/user.dart';
 
 import 'home_page.dart';
@@ -23,6 +24,32 @@ final userController = StateNotifierProvider<UserNotifier, User>((ref) => UserNo
 );
 
 
+// void main() {
+//   runApp(
+//       ProviderScope(
+//           child: const MyApp()
+//       )
+//   );
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//         useMaterial3: true,
+//       ),
+//       home: const MyHomePage(),
+//     );
+//   }
+// }
+
+
 void main() {
   runApp(
       ProviderScope(
@@ -37,13 +64,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Riverpod',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
-      home: const MyHomePage(),
+      home: const HomeScreen(),
     );
   }
 }
