@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_st_ma_training/providers/cart_provider.dart';
 import 'package:riverpod_st_ma_training/providers/product_provider.dart';
 
 class CartScreen extends ConsumerStatefulWidget {
@@ -13,7 +14,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   bool showCoupon = true;
   @override
   Widget build(BuildContext context) {
-    final cartProducts = ref.watch(reducedProductsProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Cart'),
@@ -32,6 +33,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                     children: [
                       Image.asset(product.image, width: 60, height: 60),
                       SizedBox(width: 10),
+                      Text(product.title),
                       Expanded(child: SizedBox()),
                       Text("E ${product.price}..."),
                     ],

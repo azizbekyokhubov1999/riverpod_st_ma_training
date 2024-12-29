@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_st_ma_training/providers/cart_provider.dart';
 import 'package:riverpod_st_ma_training/providers/product_provider.dart';
 
 import '../../shared/cart_icon.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final allProducts = ref.watch(productsProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,19 +30,34 @@ class HomeScreen extends ConsumerWidget {
             childAspectRatio: 0.9,
           ),
           itemBuilder:(context, index) {
-            return Container(
-              padding: const EdgeInsets.all(20),
-              color: Colors.blueGrey.withOpacity(0.05),
-              child: Column(
-                children: [
-                  Image.asset(
-                      allProducts[index].image,
-                    width: 60,
-                    height: 60,
-                  ),
-                  Text(allProducts[index].title),
-                  Text("E ${allProducts[index].price}")
-                ],
+            return SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                color: Colors.blueGrey.withOpacity(0.05),
+                child: Column(
+                  children: [
+                    Image.asset(
+                        allProducts[index].image,
+                      width: 60,
+                      height: 60,
+                    ),
+                    Text(allProducts[index].title),
+                    Text("E ${allProducts[index].price}"),
+
+                    if(cartProducts.contains(allProducts[index]))
+                      TextButton(
+                          onPressed: (){},
+                          child: Text("Remove"),
+                      ),
+                    if(!cartProducts.contains(allProducts[index]))
+                      TextButton(
+                          onPressed: (){},
+                          child: Text("Add to Cart")
+                      ),
+
+
+                  ],
+                ),
               ),
             );
           },
