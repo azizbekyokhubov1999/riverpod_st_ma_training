@@ -35,7 +35,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                       SizedBox(width: 10),
                       Text(product.title),
                       Expanded(child: SizedBox()),
-                      Text("E ${product.price}..."),
+                      Text("E ${product.price}"),
                     ],
                   ),
                 );
