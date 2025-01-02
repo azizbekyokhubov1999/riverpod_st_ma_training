@@ -6,16 +6,17 @@ class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
 
   void onSubmitted(WidgetRef ref, String value){
-    ref.read(userController.notifier).updateName(value);
+    ref.read(userChangeNotifierProvider).updateNameC(value);
   }
 
   void onSubmittedAge(WidgetRef ref, String value){
-    ref.read(userController.notifier).updateAge(int.parse(value));
+    ref.read(userChangeNotifierProvider).updateAgeC(int.parse(value));
   }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // final name = ref.watch(nameProvider) ?? "";
-    final user = ref.watch(userController);
+    // final user = ref.watch(userController);
+    final user = ref.watch(userChangeNotifierProvider).user;
     return Scaffold(
       appBar: AppBar(
         title: Text(user.name),
